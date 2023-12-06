@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_6c27d8ebe4f54f0f8673bf7e6f93d803 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_6f6269252059438e8cffcc7cf8113b8f }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_4549d002e728498291c3ae940b67afd2 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_ce6fcc8cbd0e4fc3b20450e682e0a9c2 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_6c27d8ebe4f54f0f8673bf7e6f93d803 }}/zfile:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_4549d002e728498291c3ae940b67afd2 }}/pan:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'icloud'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_e549c4777d254b0c87d0cf965d927d55 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_6c27d8ebe4f54f0f8673bf7e6f93d803 }}/zfile:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_32a88ccaa4fc4c11b81fc1c32523b573 }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_4549d002e728498291c3ae940b67afd2 }}/pan:${{ github.sha }}'
